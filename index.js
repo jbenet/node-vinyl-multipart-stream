@@ -19,10 +19,12 @@ module.exports = vmps
 // want to change it...)
 function vmps(opts) {
   opts = opts || {}
+  opts.boundary = opts.boundary || randomString()
 
   var r = new stream.PassThrough({objectMode: true})
   var w = new stream.PassThrough({objectMode: true})
   var out = duplexify.obj(w, r)
+  out.boundary = opts.boundary
 
   collect(w, function(err, files) {
     if (err) {
@@ -32,7 +34,7 @@ function vmps(opts) {
 
     try {
       // construct the multipart streams from these files
-      var mp = streamForCollection(files)
+      var mp = streamForCollection(opts.boundary, files)
 
       // let the user know what the content-type header is.
       // this is because multipart is such a grossly defined protocol :(
@@ -54,7 +56,7 @@ function vmps(opts) {
   return out
 }
 
-function streamForCollection(files) {
+function streamForCollection(boundary, files) {
   var parts = []
 
   // walk through all the named files in order.
@@ -74,7 +76,6 @@ function streamForCollection(files) {
     parts.push({ body: s, headers: headersForFile(f)})
   }
 
-  var boundary = randomString()
   if (parts.length == 0) { // avoid multipart bug.
     var s = streamForString("--" + boundary + "--\r\n") // close multipart.
     s.boundary = boundary
