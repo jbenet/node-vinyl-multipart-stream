@@ -83,7 +83,7 @@ function streamForCollection(boundary, files) {
   }
 
   // write out multipart.
-  var mp = new Multipart(randomString())
+  var mp = new Multipart(boundary)
   for (var i = 0; i < parts.length; i++) {
     mp.addPart(parts[i])
   }
