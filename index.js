@@ -130,7 +130,7 @@ function multipartForDir(files, dir) {
    // we still write the boundary for the headers
   dir.boundary = randomString()
 
-  if (dir.children && dir.children.length == 0) {
+  if (!dir.children || dir.children.length < 1) {
     // we have to intercept this here and return an empty stream.
     // because multipart lib fails if there are no parts. see
     // https://github.com/hendrikcech/multipart-stream/issues/1
@@ -139,12 +139,12 @@ function multipartForDir(files, dir) {
 
   var mp = new Multipart(dir.boundary)
   for (var i = 0; i < dir.children.length; i++) {
-    var child = dir.children[child]
+    var child = dir.children[i]
     if (!child.file) {
       throw new Error("child has no file. lib error")
     }
 
-    var s = streamForPath(files, child.path)
+    var s = streamForPath(files, child.file.path)
     mp.addPart({ body: s, headers: headersForFile(child) })
   }
   return mp

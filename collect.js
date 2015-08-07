@@ -17,7 +17,6 @@ function collect(stream, cb) {
   function get(name) {
     if (!files.named[name]) {
       files.named[name] = {
-        file: null,
         children: [],
       }
     }
@@ -37,7 +36,7 @@ function collect(stream, cb) {
       fo.file = file
 
       // add reference to file at parent
-      var po = get(Path.basename(file.path))
+      var po = get(Path.dirname(file.path))
       if (fo !== po) po.children.push(fo)
 
       // add name to names list.
