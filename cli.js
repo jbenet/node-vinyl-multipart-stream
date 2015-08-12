@@ -14,5 +14,5 @@ if (paths.length < 1) {
 }
 
 vinylfs.src(paths)
-  .pipe(vmps.flat({writeHeader: true}))
+  .pipe(vmps({writeHeader: true}))
   .pipe(process.stdout)

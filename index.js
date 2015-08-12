@@ -1,6 +1,6 @@
 var flat = require('./mp2v_flat')
-var hier = require('./mp2v_hierarchy')
+var tree = require('./mp2v_tree')
 
-var x = module.exports = hier
+var x = module.exports = tree
 x.flat = flat
-x.hierarchy = hier
+x.tree = tree

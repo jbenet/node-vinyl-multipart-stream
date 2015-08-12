@@ -6,7 +6,7 @@ var collect = require('./collect')
 var common = require('./common')
 randomString = common.randomString
 
-module.exports = v2mpHierarchy
+module.exports = v2mpTree
 
 // we'll create three streams:
 // - w: a writable stream. it receives vinyl files
@@ -19,7 +19,7 @@ module.exports = v2mpHierarchy
 // need a complete view of the filesystem. (/ the code
 // i lifted did that and it's convoluted enough not to
 // want to change it...)
-function v2mpHierarchy(opts) {
+function v2mpTree(opts) {
   opts = opts || {}
   opts.boundary = opts.boundary || randomString()
 
