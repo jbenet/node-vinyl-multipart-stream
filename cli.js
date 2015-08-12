@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var vinylfs = require('vinyl-fs')
+var vinylfs = require('vinyl-fs-that-respects-files')
 var vmps = require('./index')
 
 var usage = "usage: multipart-stream <paths>...\n"
