@@ -153,8 +153,10 @@ function multipartForDir(files, dir) {
 }
 
 function headersForFile(o) {
+  var fpath = o.file.path.replace(o.file.base, '')
+
   var h = {}
-  h['Content-Disposition'] = 'file; filename="' + Path.basename(o.file.path) + '"'
+  h['Content-Disposition'] = 'file; filename="' + fpath + '"'
 
   if (o.file.isDirectory()) {
     h['Content-Type'] = 'multipart/mixed; boundary=' + o.boundary
