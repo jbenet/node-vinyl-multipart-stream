@@ -153,7 +153,7 @@ function multipartForDir(files, dir) {
 }
 
 function headersForFile(o) {
-  var fpath = o.file.path.replace(o.file.base, '')
+  var fpath = o.file.path.replace(o.file.base+'/', '')
 
   var h = {}
   h['Content-Disposition'] = 'file; filename="' + fpath + '"'
