@@ -1,6 +1,6 @@
 {
   "name": "vinyl-multipart-stream",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "vinyl multipart stream",
   "main": "index.js",
   "bin": {

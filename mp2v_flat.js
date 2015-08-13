@@ -54,7 +54,7 @@ function emptyStream() {
 }
 
 function headersForFile(file) {
-  var fpath = file.path.replace(file.base+'/', '')
+  var fpath = common.cleanPath(file.path, file.base)
 
   var h = {}
   h['Content-Disposition'] = 'file; filename="' +fpath+ '"'
