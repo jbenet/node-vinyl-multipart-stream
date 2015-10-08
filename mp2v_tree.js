@@ -121,10 +121,6 @@ function streamForWrapped(files, f) {
   }
 
   // stream for a file
-  if (f.children.length > 0) { // sanity check
-    throw new Error("non-directory has children. lib error")
-  }
-
   return f.file.contents
 }
 
