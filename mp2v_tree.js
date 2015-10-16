@@ -4,7 +4,7 @@ var stream = require('stream')
 var Path = require('path')
 var collect = require('./collect')
 var common = require('./common')
-randomString = common.randomString
+var randomString = common.randomString
 
 module.exports = v2mpTree
 
