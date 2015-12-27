@@ -17,8 +17,11 @@ function cleanPath(path, base) {
     base += "/"
   }
 
+  var parts = base.split('/')
+  var smallBase = parts.slice(0, parts.length - 2).join('/') + '/'
+
   // remove base from path
-  path = path.replace(base, '')
+  path = path.replace(smallBase, '')
   path = path.replace(/[\/]+/g, '/')
   return path
 }
